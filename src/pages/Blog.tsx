@@ -7,7 +7,7 @@ import { BlogPostCard } from "@/components/ui/BlogPostCard";
 import { ArrowRight, Mail, ChevronDown, Loader2 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API = import.meta.env.VITE_BACKEND_URL || "https://northstar-backend-frnb.onrender.com";
 
 const categories = [
   "All",
@@ -77,8 +77,8 @@ export default function Blog() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28">
-        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
+      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28">
+        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -87,24 +87,24 @@ export default function Blog() {
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl animate-fade-in-up" style={{ animationDelay: '0ms', animationFillMode: 'both' }}>
-              Insights & <span className="text-gradient-light">Resources</span>
+              Insights & <span className="text-gradient">Resources</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/78 animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
               Practical guidance on IT, cybersecurity, compliance, and business technology
             </p>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
           <ChevronDown className="h-6 w-6 text-white" />
         </div>
       </section>
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="relative -mt-10 z-20 py-16 md:py-20">
+        <section className="py-16 md:py-20 bg-background relative -mt-10 z-20">
           <div className="container mx-auto px-4 lg:px-8">
             <Link to={`/blog/${featuredPost.slug}`} className="block">
-              <article className="group grid gap-8 overflow-hidden rounded-3xl border border-border/70 bg-card/80 shadow-elevated backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_28px_70px_-28px_hsl(var(--foreground)/0.9)] lg:grid-cols-2">
+              <article className="group grid gap-8 rounded-3xl border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-primary/20 lg:grid-cols-2 overflow-hidden">
                 <div className="overflow-hidden relative h-full min-h-[300px]">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 lg:hidden" />
                   {featuredPost.ogImage ? (
@@ -133,17 +133,15 @@ export default function Blog() {
       )}
 
       {/* Category Filter */}
-      <section className="sticky top-[76px] z-30 border-y border-border/70 bg-background/82 pb-6 pt-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/65">
+      <section className="border-b border-border bg-background pb-8 sticky top-[72px] z-30 pt-4 backdrop-blur-md bg-background/80 supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-2">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`rounded-full border px-5 py-2 text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "border-primary/45 bg-primary/16 text-primary shadow-soft scale-105"
-                    : "border-border/75 bg-card/65 text-muted-foreground hover:border-primary/30 hover:bg-primary/10 hover:text-foreground"
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category ? "bg-primary text-primary-foreground shadow-md scale-105" : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                 }`}
               >
                 {category}
@@ -154,30 +152,32 @@ export default function Blog() {
       </section>
 
       {/* Blog Grid */}
-      <section className="relative py-16 md:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_20%,hsl(var(--primary)/0.08),transparent_44%)]" />
-        <div className="container relative mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8">
           {loading ? (
             <div className="flex justify-center py-20"><Loader2 className="h-8 w-8 animate-spin text-muted-foreground" /></div>
           ) : (
             <>
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {displayedPosts.map((post, index) => (
-                  <div key={post.slug} className="h-full" style={{ animationDelay: `${index * 50}ms` }}>
-                    <BlogPostCard
-                      category={post.category}
-                      title={post.title}
-                      excerpt={post.excerpt}
-                      image={post.ogImage || undefined}
-                      href={`/blog/${post.slug}`}
-                      className="h-full"
-                    />
-                  </div>
+                  <>
+                    <div key={post.slug} className="h-full" style={{ animationDelay: `${index * 50}ms` }}>
+                      <BlogPostCard
+                        category={post.category}
+                        title={post.title}
+                        excerpt={post.excerpt}
+                        image={post.ogImage || undefined}
+                        href={`/blog/${post.slug}`}
+                        className="h-full rounded-2xl border-border/50 bg-card hover:border-primary/30 hover:shadow-xl transition-all duration-300"
+                      />
+                    </div>
+                    {/* CTA removed - was disruptive between blog cards */}
+                  </>
                 ))}
               </div>
               {hasMorePosts && (
                 <div className="mt-16 text-center">
-                  <Button variant="outline" size="lg" onClick={handleLoadMore} className="rounded-full border-primary/30 px-8 hover:bg-primary/10">
+                  <Button variant="outline" size="lg" onClick={handleLoadMore} className="rounded-full px-8 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300">
                     Load More Posts
                   </Button>
                 </div>
@@ -194,20 +194,20 @@ export default function Blog() {
       </section>
 
       {/* Newsletter */}
-      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-20">
-        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
+      <section className="relative overflow-hidden hero-gradient-bg py-20">
+        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-xl rounded-3xl border border-white/15 bg-white/6 p-8 text-center backdrop-blur md:p-10">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white backdrop-blur-sm">
+          <div className="mx-auto max-w-xl text-center">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white backdrop-blur-sm mb-6">
               <Mail className="h-8 w-8" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">Get IT Insights Delivered to Your Inbox</h2>
-            <p className="mb-8 text-lg text-white/78">Subscribe for practical tips, industry updates, and expert guidance.</p>
+            <p className="text-gray-300 mb-8 text-lg">Subscribe for practical tips, industry updates, and expert guidance.</p>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Input type="email" placeholder="Enter your email" className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/45 focus-visible:ring-white/30 sm:w-80" />
-              <Button className="h-12 px-8">Subscribe</Button>
+              <Input type="email" placeholder="Enter your email" className="sm:w-80 h-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-white/30" />
+              <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 font-semibold">Subscribe</Button>
             </div>
-            <p className="mt-4 text-xs text-white/52">No spam. Unsubscribe anytime.</p>
+            <p className="mt-4 text-xs text-gray-400">No spam. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>
