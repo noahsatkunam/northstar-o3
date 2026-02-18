@@ -13,7 +13,7 @@ interface Webinar {
   updatedAt: string;
 }
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API = import.meta.env.VITE_BACKEND_URL || "https://northstar-backend-frnb.onrender.com";
 
 export default function AdminWebinarDashboard() {
   const [webinars, setWebinars] = useState<Webinar[]>([]);

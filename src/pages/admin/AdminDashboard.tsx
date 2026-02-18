@@ -13,7 +13,7 @@ interface Post {
   author: string;
 }
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API = import.meta.env.VITE_BACKEND_URL || "https://northstar-backend-frnb.onrender.com";
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState<Post[]>([]);
