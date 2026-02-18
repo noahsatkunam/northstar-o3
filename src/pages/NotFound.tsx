@@ -13,23 +13,23 @@ const NotFound = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-sidebar py-20 md:py-28">
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-8xl font-bold text-sidebar-foreground/20 md:text-9xl">
+            <p className="text-8xl font-bold text-white/20 md:text-9xl">
               404
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-sidebar-foreground md:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
               Page Not Found
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-sidebar-foreground/70">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/75">
               The page you're looking for doesn't exist or has been moved.
             </p>
             <div className="mt-8">
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <Link to="/">Back to Home</Link>
               </Button>
@@ -41,7 +41,7 @@ const NotFound = () => {
       {/* Helpful Links Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl rounded-3xl border border-border/70 bg-card/72 p-8 text-center shadow-soft backdrop-blur">
             <h2 className="text-xl font-semibold text-foreground">
               Looking for something? Try:
             </h2>
@@ -50,7 +50,7 @@ const NotFound = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="border border-border bg-card px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="rounded-full border border-border/70 bg-background/65 px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
                 >
                   {link.name}
                 </Link>

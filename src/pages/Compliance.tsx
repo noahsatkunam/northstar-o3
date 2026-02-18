@@ -132,8 +132,8 @@ export default function Compliance() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         
         {/* Animated gradient background */}
         <div
@@ -153,10 +153,10 @@ export default function Compliance() {
               className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up"
               style={{ animationDelay: '0ms', animationFillMode: 'both' }}
             >
-              Compliance Without the <span className="text-gradient">Complexity</span>
+              Compliance Without the <span className="text-gradient-light">Complexity</span>
             </h1>
             <p
-              className="mx-auto mt-8 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed"
+              className="mx-auto mt-8 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed"
               style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             >
               Navigate HIPAA, CMMC, NIST, ITAR, and industry regulations with confidence through our expert-led approach.
@@ -165,15 +165,15 @@ export default function Compliance() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 md:py-28 bg-background relative">
+      <section className="relative py-20 md:py-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-border/75 bg-card/65 p-8 text-center shadow-soft backdrop-blur md:p-10">
             <p className="text-xl md:text-2xl leading-relaxed text-muted-foreground font-light">
               NorthStar helps healthcare providers, financial services, and regulated businesses 
               achieve and maintain compliance. We combine <span className="text-foreground font-medium">technical expertise</span> with <span className="text-foreground font-medium">practical 
@@ -196,8 +196,8 @@ export default function Compliance() {
       </section>
 
       {/* Compliance Areas Grid */}
-      <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.05),transparent_40%)]" />
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.1),transparent_45%)]" />
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <h2 className="mb-16 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
@@ -207,10 +207,10 @@ export default function Compliance() {
             {complianceAreas.map((area, index) => (
               <div
                 key={area.title}
-                className="group relative overflow-hidden rounded-2xl border border-border/50 bg-background p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/20"
+                className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card/72 p-8 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl border border-primary/30 bg-primary/12 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <area.icon className="h-7 w-7" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-foreground">
@@ -219,7 +219,7 @@ export default function Compliance() {
                 <p className="mb-6 text-sm text-muted-foreground leading-relaxed">
                   {area.description}
                 </p>
-                <ul className="space-y-3 border-t border-border/50 pt-6">
+                <ul className="space-y-3 border-t border-border/60 pt-6">
                   {area.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
@@ -234,7 +234,7 @@ export default function Compliance() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="mb-16 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Our Compliance Approach
@@ -244,11 +244,11 @@ export default function Compliance() {
               <div key={step.title} className="relative group">
                 {/* Connector line */}
                 {index < processSteps.length - 1 && (
-                  <div className="absolute left-1/2 top-10 hidden h-0.5 w-full bg-gradient-to-r from-border to-transparent lg:block group-hover:from-primary/50 transition-colors duration-500" />
+                  <div className="absolute left-1/2 top-10 hidden h-0.5 w-full bg-gradient-to-r from-border/80 to-transparent lg:block group-hover:from-primary/50 transition-colors duration-500" />
                 )}
                 
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="relative mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 group-hover:border-primary group-hover:shadow-lg group-hover:scale-110">
+                  <div className="relative mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-border/70 bg-card/72 shadow-soft backdrop-blur transition-all duration-300 group-hover:scale-105 group-hover:border-primary group-hover:shadow-elevated">
                     <step.icon className="h-8 w-8 text-primary opacity-80 group-hover:opacity-100 transition-opacity" />
                     <span className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-white shadow-md">
                       {step.number}
@@ -269,11 +269,11 @@ export default function Compliance() {
       </section>
 
       {/* Trust Elements Section */}
-      <section className="py-16 bg-muted/50 border-y border-border/50">
+      <section className="border-y border-border/70 py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
+          <div className="flex flex-col items-center gap-8 rounded-3xl border border-border/70 bg-card/65 p-8 backdrop-blur lg:flex-row lg:justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/30 bg-primary/12 text-primary">
                 <Award className="h-6 w-6" />
               </div>
               <p className="text-lg font-medium text-foreground max-w-md">
@@ -285,12 +285,12 @@ export default function Compliance() {
                 const badgeMap: Record<string, string> = { "SOC 2": soc2Badge, "HIPAA": hipaaBadge };
                 const badge = badgeMap[cert];
                 return badge ? (
-                  <div key={cert} className="flex flex-col items-center gap-1 rounded-lg border border-border bg-background px-4 py-2 shadow-sm transition-transform hover:-translate-y-0.5">
+                  <div key={cert} className="flex flex-col items-center gap-1 rounded-lg border border-border/70 bg-background/65 px-4 py-2 shadow-soft transition-transform hover:-translate-y-0.5">
                     <img src={badge} alt={cert} className="h-10 w-auto object-contain" />
                     <span className="text-[10px] font-semibold text-foreground/60">{cert}</span>
                   </div>
                 ) : (
-                  <div key={cert} className="flex h-12 min-w-[100px] items-center justify-center rounded-lg border border-border bg-background px-6 shadow-sm transition-transform hover:-translate-y-0.5">
+                  <div key={cert} className="flex h-12 min-w-[100px] items-center justify-center rounded-lg border border-border/70 bg-background/65 px-6 shadow-soft transition-transform hover:-translate-y-0.5">
                     <span className="text-sm font-semibold text-foreground/80">{cert}</span>
                   </div>
                 );
@@ -301,8 +301,8 @@ export default function Compliance() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden hero-gradient-bg text-center">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-24 text-center md:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl mb-8">
@@ -310,7 +310,7 @@ export default function Compliance() {
             </h2>
             <Button 
               size="lg" 
-              className="h-14 px-10 text-lg bg-white text-black hover:bg-white/90 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-1"
+              className="h-14 px-10 text-lg"
               onClick={openModal}
             >
               Request a Compliance Assessment

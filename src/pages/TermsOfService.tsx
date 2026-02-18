@@ -11,7 +11,9 @@ const TermsOfService = () => {
 
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-4xl">
+          <div className="prose prose-lg mx-auto max-w-4xl rounded-3xl border border-border/70 bg-card/72 p-6 shadow-soft backdrop-blur md:p-10
+            prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+            prose-p:text-muted-foreground prose-p:leading-relaxed">
             <p className="text-muted-foreground">
               Last updated: January 2026
             </p>

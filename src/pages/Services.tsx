@@ -1,11 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Server, Shield, Bot, Lightbulb, CheckCircle, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useContactModal } from "@/components/ContactModal";
@@ -89,8 +83,8 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         
         {/* Animated gradient background */}
         <div
@@ -110,10 +104,10 @@ export default function Services() {
               className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up"
               style={{ animationDelay: '0ms', animationFillMode: 'both' }}
             >
-              Technology Solutions That Drive Your <span className="text-gradient">Business Forward</span>
+              Technology Solutions That Drive Your <span className="text-gradient-light">Business Forward</span>
             </h1>
             <p
-              className="mx-auto mt-8 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed"
+              className="mx-auto mt-8 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed"
               style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             >
               From day-to-day IT support to AI-powered automation, we deliver the expertise you need.
@@ -122,25 +116,26 @@ export default function Services() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Service Categories - Bento Grid Style */}
-      <section className="py-24 md:py-32 relative bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative overflow-hidden py-24 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,hsl(var(--primary)/0.1),transparent_40%),radial-gradient(circle_at_84%_84%,hsl(var(--accent)/0.1),transparent_40%)]" />
+        <div className="container relative mx-auto px-4 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             {serviceCategories.map((category, index) => (
               <div 
                 key={category.id} 
-                className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-8 md:p-10 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-primary/20 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/75 p-8 shadow-soft backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated md:p-10"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="absolute top-0 right-0 -mt-8 -mr-8 h-32 w-32 rounded-full bg-primary/5 blur-2xl transition-all duration-500 group-hover:bg-primary/10" />
+                <div className="absolute -mr-8 -mt-8 right-0 top-0 h-32 w-32 rounded-full bg-primary/10 blur-2xl transition-all duration-500 group-hover:bg-primary/20" />
                 
                 <div className="relative z-10">
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <category.icon className="h-7 w-7" />
                   </div>
                   
@@ -153,7 +148,7 @@ export default function Services() {
                   
                   <ul className="mb-8 grid gap-3 sm:grid-cols-2">
                     {category.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5 text-sm text-muted-foreground/90">
+                      <li key={feature} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground/90">
                         <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
                         <span>{feature}</span>
                       </li>
@@ -163,7 +158,7 @@ export default function Services() {
                   <div className="flex flex-wrap gap-3">
                     <Button 
                       variant="outline" 
-                      className="group/btn w-full sm:w-auto border-primary/20 hover:border-primary hover:bg-primary/5" 
+                      className="group/btn w-full sm:w-auto border-primary/30 hover:border-primary hover:bg-primary/10" 
                       onClick={openModal}
                     >
                       {category.cta}
@@ -192,19 +187,19 @@ export default function Services() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden hero-gradient-bg text-center">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-24 text-center md:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl mb-6">
               Not Sure Where to Start?
             </h2>
-            <p className="text-xl text-gray-300 mb-10">
+            <p className="text-xl text-white/78 mb-10">
               Our team will assess your current environment and recommend the right solutions.
             </p>
             <Button 
               size="lg" 
-              className="h-14 px-10 text-lg bg-white text-black hover:bg-white/90 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-1"
+              className="h-14 px-10 text-lg"
               onClick={openModal}
             >
               Get a Free Assessment

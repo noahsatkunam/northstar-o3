@@ -74,7 +74,7 @@ function FeaturedWebinarSection() {
   return (
     <section className="relative -mt-10 z-20 pb-0">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/12 via-card/80 to-accent/12 shadow-elevated backdrop-blur">
           <div className="absolute inset-0 bg-grid-pattern opacity-5" />
           <div className="relative p-8 md:p-12 lg:p-16">
             <div className="flex items-center gap-2 mb-6">
@@ -128,7 +128,7 @@ function FeaturedWebinarSection() {
 
             {featured.registrationLink && (
               <a href={featured.registrationLink} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="rounded-full px-10 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <Button size="lg" className="rounded-full px-10 py-6 text-lg font-bold shadow-elevated transition-all hover:scale-105">
                   Register Now - It's Free <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </a>
@@ -176,8 +176,8 @@ export default function Webinars() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -186,14 +186,14 @@ export default function Webinars() {
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: '0ms', animationFillMode: 'both' }}>
-              Learn From the <span className="text-gradient">Experts</span>
+              Learn From the <span className="text-gradient-light">Experts</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
               Free webinars on IT strategy, cybersecurity, compliance, and emerging technology
             </p>
           </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
@@ -202,7 +202,7 @@ export default function Webinars() {
       <FeaturedWebinarSection />
 
       {/* Upcoming Webinars */}
-      <section className="py-20 md:py-28 bg-background relative -mt-10 z-20">
+      <section className="relative -mt-10 z-20 py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-3xl font-bold text-foreground mb-12">Upcoming Events</h2>
 
@@ -211,7 +211,7 @@ export default function Webinars() {
           ) : upcoming.length > 0 ? (
             <div className="grid gap-8 lg:grid-cols-2">
               {upcoming.map((webinar, index) => (
-                <div key={webinar.slug} className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-primary/20 hover:-translate-y-1" style={{ animationDelay: `${index * 150}ms` }}>
+                <div key={webinar.slug} className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/75 shadow-soft backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated" style={{ animationDelay: `${index * 150}ms` }}>
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     {webinar.ogImage && <img src={webinar.ogImage} alt={webinar.title} className="absolute inset-0 w-full h-full object-cover" />}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
@@ -253,7 +253,7 @@ export default function Webinars() {
                         ))}
                       </div>
                     )}
-                    <div className="flex items-center justify-between border-t border-border/50 pt-6">
+                    <div className="flex items-center justify-between border-t border-border/60 pt-6">
                       <div className="flex items-center gap-3">
                         {webinar.speakers?.length > 0 && (
                           <div>
@@ -268,11 +268,11 @@ export default function Webinars() {
                       </div>
                       {webinar.registrationUrl ? (
                         <a href={webinar.registrationUrl} target="_blank" rel="noopener noreferrer">
-                          <Button size="lg" className="rounded-full px-6 shadow-md hover:shadow-lg transition-all">Register Now</Button>
+                          <Button size="lg" className="rounded-full px-6">Register Now</Button>
                         </a>
                       ) : (
                         <Link to={`/webinars/${webinar.slug}`}>
-                          <Button size="lg" className="rounded-full px-6 shadow-md hover:shadow-lg transition-all">Learn More</Button>
+                          <Button size="lg" className="rounded-full px-6">Learn More</Button>
                         </Link>
                       )}
                     </div>
@@ -281,7 +281,7 @@ export default function Webinars() {
               ))}
             </div>
           ) : (
-            <div className="mt-10 border border-border bg-muted/30 rounded-2xl p-12 text-center">
+            <div className="mt-10 rounded-2xl border border-border/70 bg-card/65 p-12 text-center">
               <p className="text-muted-foreground text-lg">No upcoming webinars scheduled. Sign up below to be notified of future events.</p>
             </div>
           )}
@@ -290,14 +290,14 @@ export default function Webinars() {
 
       {/* Past Webinars */}
       {past.length > 0 && (
-        <section className="py-20 md:py-28 bg-muted/30 border-t border-border/50">
+        <section className="border-t border-border/70 py-20 md:py-28">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="text-3xl font-bold text-foreground mb-12">Watch On-Demand</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {past.map((webinar, index) => {
                 const embedUrl = getYouTubeEmbedUrl(webinar.youtubeUrl);
                 return (
-                  <div key={webinar.slug} className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:-translate-y-1" style={{ animationDelay: `${index * 50}ms` }}>
+                  <div key={webinar.slug} className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card/72 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated" style={{ animationDelay: `${index * 50}ms` }}>
                     {embedUrl ? (
                       <div className="relative aspect-video">
                         <iframe
@@ -350,27 +350,27 @@ export default function Webinars() {
       )}
 
       {/* Newsletter/Notification Signup */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-20">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-xl text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white backdrop-blur-sm mb-6 border border-white/10">
+          <div className="mx-auto max-w-xl rounded-3xl border border-white/15 bg-white/6 p-8 text-center backdrop-blur md:p-10">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white backdrop-blur-sm">
               <Bell className="h-8 w-8" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">Don't Miss Our Next Event</h2>
-            <p className="text-gray-300 mb-8 text-lg">Get notified when we announce new webinars and training sessions.</p>
+            <p className="mb-8 text-lg text-white/78">Get notified when we announce new webinars and training sessions.</p>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Input type="email" placeholder="Enter your email" className="sm:w-80 h-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-white/30" />
-              <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 font-semibold">Notify Me</Button>
+              <Input type="email" placeholder="Enter your email" className="h-12 border-white/20 bg-white/10 text-white placeholder:text-white/45 focus-visible:ring-white/30 sm:w-80" />
+              <Button className="h-12 px-8">Notify Me</Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Security Posture CTA */}
-      <section className="py-16 bg-background border-t border-border/50">
+      <section className="border-t border-border/70 py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl rounded-2xl border border-border/70 bg-card/65 p-8 text-center shadow-soft">
             <h3 className="text-xl font-bold text-foreground mb-3">While you wait for our next webinar...</h3>
             <p className="text-muted-foreground mb-6">Check your organization's security posture with our free assessment tool.</p>
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -388,13 +388,14 @@ export default function Webinars() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-sidebar py-16 md:py-20">
+      <section className="hero-gradient-bg relative overflow-hidden border-t border-border/70 py-16 md:py-20">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-sidebar-foreground md:text-3xl">Want a Custom Training for Your Team?</h2>
-            <p className="mt-4 text-sidebar-foreground/70">We offer tailored training sessions on cybersecurity, compliance, and technology best practices.</p>
+            <h2 className="text-2xl font-bold text-white md:text-3xl">Want a Custom Training for Your Team?</h2>
+            <p className="mt-4 text-white/72">We offer tailored training sessions on cybersecurity, compliance, and technology best practices.</p>
             <div className="mt-8">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={openModal}>Contact Us</Button>
+              <Button size="lg" onClick={openModal}>Contact Us</Button>
             </div>
           </div>
         </div>

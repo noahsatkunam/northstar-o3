@@ -20,7 +20,7 @@ export interface ServiceCardProps extends React.HTMLAttributes<HTMLDivElement> {
 const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
   ({ className, icon: Icon, title, description, href, ctaText = "Learn more", ...props }, ref) => {
     const ctaContent = (
-      <span className="mt-4 inline-flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80">
+      <span className="mt-5 inline-flex items-center text-sm font-semibold text-primary transition-colors hover:text-primary/80">
         {ctaText}
         <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-fast group-hover:translate-x-1" />
       </span>
@@ -30,19 +30,19 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
       <div
         ref={ref}
         className={cn(
-          "group border border-border bg-card p-6 shadow-sm transition-all duration-DEFAULT rounded-xl",
-          "hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg",
+          "group rounded-2xl border border-border/70 bg-card/85 p-7 shadow-soft transition-all duration-DEFAULT",
+          "hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated",
           className
         )}
         {...props}
       >
-        <div className="flex h-12 w-12 items-center justify-center bg-primary/10 transition-transform duration-fast group-hover:scale-110">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 transition-transform duration-fast group-hover:scale-105 group-hover:bg-primary/15">
           <Icon className="h-6 w-6 text-primary" />
         </div>
-        <h3 className="mt-5 text-lg font-semibold text-card-foreground">
+        <h3 className="mt-6 text-lg font-semibold text-card-foreground">
           {title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
         {href ? (

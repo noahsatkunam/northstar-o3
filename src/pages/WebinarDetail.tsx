@@ -102,10 +102,11 @@ export default function WebinarDetail() {
         {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
       </Helmet>
 
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-5xl px-4 lg:px-8">
+          <div className="rounded-3xl border border-border/70 bg-card/72 p-6 shadow-soft backdrop-blur md:p-10">
           {/* Back link */}
-          <Link to="/webinars" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
+          <Link to="/webinars" className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             <ArrowLeft className="h-4 w-4" /> Back to Webinars
           </Link>
 
@@ -139,7 +140,7 @@ export default function WebinarDetail() {
 
           {/* YouTube embed for past */}
           {webinar.type === "past" && embedUrl && (
-            <div className="relative w-full mb-8 rounded-2xl overflow-hidden shadow-lg" style={{ paddingBottom: "56.25%" }}>
+            <div className="relative mb-8 w-full overflow-hidden rounded-2xl border border-border/70 shadow-elevated" style={{ paddingBottom: "56.25%" }}>
               <iframe
                 src={embedUrl}
                 title={webinar.title}
@@ -152,7 +153,7 @@ export default function WebinarDetail() {
 
           {/* Registration CTA for upcoming */}
           {webinar.type === "upcoming" && webinar.registrationUrl && (
-            <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 mb-8 text-center">
+            <div className="mb-8 rounded-2xl border border-primary/30 bg-primary/10 p-8 text-center">
               <h2 className="text-xl font-bold mb-2">Register for This Webinar</h2>
               <p className="text-muted-foreground mb-4">{webinar.description}</p>
               <a href={webinar.registrationUrl} target="_blank" rel="noopener noreferrer">
@@ -191,7 +192,7 @@ export default function WebinarDetail() {
               </h3>
               <div className="grid gap-4 sm:grid-cols-2">
                 {webinar.speakers.map((s, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 border rounded-xl bg-card">
+                  <div key={i} className="flex items-center gap-4 rounded-xl border border-border/70 bg-background/65 p-4">
                     {s.image ? (
                       <img src={s.image} alt={s.name} className="h-12 w-12 rounded-full object-cover" />
                     ) : (
@@ -208,6 +209,7 @@ export default function WebinarDetail() {
               </div>
             </div>
           )}
+          </div>
         </div>
       </section>
     </Layout>

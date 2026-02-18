@@ -233,7 +233,7 @@ export default {
   		},
   		fontFamily: {
   			sans: [
-  				'Space Grotesk',
+				'Manrope',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -246,7 +246,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'Lora',
+				'IBM Plex Serif',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -255,7 +255,7 @@ export default {
   				'serif'
   			],
   			mono: [
-  				'Space Mono',
+				'IBM Plex Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',

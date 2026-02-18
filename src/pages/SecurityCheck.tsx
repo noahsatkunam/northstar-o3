@@ -589,8 +589,8 @@ export default function SecurityCheck() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -600,27 +600,28 @@ export default function SecurityCheck() {
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: '0ms', animationFillMode: 'both' }}>
-              Complete <span className="text-gradient">Security Check</span> in Minutes
+              Complete <span className="text-gradient-light">Security Check</span> in Minutes
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
               Get a comprehensive security assessment covering email authentication, infrastructure vulnerabilities, and dark web exposure.
             </p>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16 md:py-24 bg-background relative -mt-10 z-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative -mt-10 z-20 py-16 md:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_18%,hsl(var(--primary)/0.1),transparent_38%)]" />
+        <div className="container relative mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-5xl">
 
             {/* ========== FORM STEP ========== */}
             {step === "form" && (
-              <div className="mx-auto max-w-4xl rounded-3xl border border-border/50 bg-card p-8 md:p-12 shadow-2xl backdrop-blur-sm animate-fade-in-up">
+              <div className="mx-auto max-w-4xl animate-fade-in-up rounded-3xl border border-border/70 bg-card/78 p-8 shadow-elevated backdrop-blur md:p-12">
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
                     <Lock className="h-8 w-8 text-primary" />
@@ -1085,7 +1086,7 @@ export default function SecurityCheck() {
                 </div>
 
                 {/* ========== CTA SECTION ========== */}
-                <div className="rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 p-8 shadow-lg animate-fade-in-up">
+                <div className="animate-fade-in-up rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-card/85 via-card/78 to-primary/10 p-8 shadow-elevated">
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-3">Get Your Complete Security Report</h3>
                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
@@ -1113,7 +1114,7 @@ export default function SecurityCheck() {
       </section>
 
       {/* Educational Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="border-t border-border/70 py-16 md:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-foreground md:text-3xl mb-12">Why Security Matters</h2>
           <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
@@ -1134,8 +1135,8 @@ export default function SecurityCheck() {
                 desc: "Compromised credentials on the dark web can lead to account takeovers and data breaches. Early detection allows you to secure accounts before they're exploited." 
               },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center bg-primary/10 rounded-2xl mb-4">
+              <div key={i} className="rounded-2xl border border-border/70 bg-card/68 p-6 text-center shadow-soft">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12">
                   <item.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
@@ -1147,13 +1148,14 @@ export default function SecurityCheck() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="bg-sidebar py-16 md:py-20">
+      <section className="hero-gradient-bg relative overflow-hidden border-t border-border/70 py-16 md:py-20">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-sidebar-foreground md:text-3xl">Need Help Securing Your Infrastructure?</h2>
-            <p className="mt-4 text-sidebar-foreground/70">Our team can implement the recommended security fixes and provide ongoing monitoring</p>
+            <h2 className="text-2xl font-bold text-white md:text-3xl">Need Help Securing Your Infrastructure?</h2>
+            <p className="mt-4 text-white/72">Our team can implement the recommended security fixes and provide ongoing monitoring</p>
             <div className="mt-8">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={openModal}>Get Expert Help</Button>
+              <Button size="lg" onClick={openModal}>Get Expert Help</Button>
             </div>
           </div>
         </div>

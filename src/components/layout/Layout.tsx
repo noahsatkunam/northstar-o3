@@ -42,15 +42,27 @@ export function Layout({ children }: LayoutProps) {
   const showBanner = banner?.enabled && !bannerDismissed;
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col overflow-x-clip">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        aria-hidden="true"
+      >
+        <div className="absolute -top-24 left-[-10%] h-[360px] w-[360px] rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute top-[28%] right-[-8%] h-[320px] w-[320px] rounded-full bg-accent/10 blur-3xl" />
+      </div>
       {showBanner && (
-        <div className="relative z-50 flex items-center justify-center gap-2 bg-gradient-to-r from-primary via-primary/90 to-accent px-4 py-2.5 text-sm font-medium text-white">
-          <a href={banner.link || "/webinars"} className="hover:underline">
-            {banner.text}
-          </a>
+        <div className="relative z-50 border-b border-primary/30 bg-primary/12 px-4 py-2.5 text-sm">
+          <div className="container mx-auto flex items-center justify-center gap-3">
+            <a
+              href={banner.link || "/webinars"}
+              className="text-center font-semibold tracking-[0.01em] text-primary hover:underline"
+            >
+              {banner.text}
+            </a>
+          </div>
           <button
             onClick={() => setBannerDismissed(true)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 hover:bg-white/20 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-primary/80 transition-colors hover:bg-primary/20 hover:text-primary"
             aria-label="Dismiss banner"
           >
             <X className="h-4 w-4" />
@@ -60,12 +72,12 @@ export function Layout({ children }: LayoutProps) {
       <ScrollProgress />
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2 focus:font-semibold focus:text-primary-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2"
       >
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="relative z-0 flex-1">
         {children}
       </main>
       <Footer />

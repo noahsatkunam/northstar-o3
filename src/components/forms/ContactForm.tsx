@@ -117,7 +117,7 @@ export function ContactForm({ source = "contact-modal", onSuccess, onError }: Co
   if (submitStatus === "success") {
     return (
       <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-secondary/35 bg-secondary/15">
           <CheckCircle className="h-8 w-8 text-secondary" />
         </div>
         <h3 className="mb-2 text-2xl font-bold text-foreground">Thank You!</h3>
@@ -138,9 +138,9 @@ export function ContactForm({ source = "contact-modal", onSuccess, onError }: Co
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {submitStatus === "error" && (
-        <div className="flex items-start gap-2 rounded-lg border border-destructive/50 bg-destructive/10 p-4">
+        <div className="flex items-start gap-2 rounded-xl border border-destructive/45 bg-destructive/10 p-4">
           <AlertCircle className="h-5 w-5 shrink-0 text-destructive" />
           <p className="text-sm text-destructive">{errorMessage}</p>
         </div>
@@ -250,7 +250,7 @@ export function ContactForm({ source = "contact-modal", onSuccess, onError }: Co
 
       <Button
         type="submit"
-        className="w-full"
+        className="mt-2 h-12 w-full"
         disabled={isSubmitting}
       >
         {isSubmitting ? (

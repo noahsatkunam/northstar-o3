@@ -539,8 +539,8 @@ export default function DmarcChecker() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -550,24 +550,25 @@ export default function DmarcChecker() {
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: '0ms', animationFillMode: 'both' }}>
-              Check Your <span className="text-gradient">Email Security</span> in Seconds
+              Check Your <span className="text-gradient-light">Email Security</span> in Seconds
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
               See if your domain has proper DMARC, SPF, and DKIM records configured to prevent spoofing.
             </p>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Tool Section */}
-      <section className="py-16 md:py-24 bg-background relative -mt-10 z-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative -mt-10 z-20 py-16 md:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,hsl(var(--primary)/0.1),transparent_38%)]" />
+        <div className="container relative mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <div className="rounded-3xl border border-border/50 bg-card p-8 md:p-12 shadow-2xl backdrop-blur-sm">
+            <div className="rounded-3xl border border-border/70 bg-card/78 p-8 shadow-elevated backdrop-blur md:p-12">
               <h2 className="text-center text-2xl font-bold text-card-foreground mb-8">Enter Your Domain</h2>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <div className="group relative flex-1">
@@ -608,7 +609,7 @@ export default function DmarcChecker() {
 
       {/* Results Section */}
       {results && resultsRevealed && (
-        <section className="border-t border-border bg-muted py-12 md:py-16">
+        <section className="border-y border-border/70 py-12 md:py-16">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="mx-auto max-w-3xl">
               {/* Overall Score */}
@@ -761,8 +762,8 @@ export default function DmarcChecker() {
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-foreground md:text-3xl">Why Email Authentication Matters</h2>
           <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 md:grid-cols-3">
-            <div className="border border-border bg-card p-4 sm:p-6 text-center transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-lg">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center bg-primary/10"><Shield className="h-7 w-7 text-primary" /></div>
+            <div className="rounded-2xl border border-border/70 bg-card/72 p-4 text-center shadow-soft transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevated sm:p-6">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12"><Shield className="h-7 w-7 text-primary" /></div>
               <h3 className="mt-5 text-lg font-semibold text-card-foreground">Prevent Spoofing</h3>
               <p className="mt-2 text-sm text-muted-foreground">Stop attackers from sending emails that look like they're from you</p>
               <Accordion type="single" collapsible className="mt-4 text-left">
@@ -782,8 +783,8 @@ export default function DmarcChecker() {
               </Accordion>
             </div>
 
-            <div className="border border-border bg-card p-4 sm:p-6 text-center transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-lg">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center bg-primary/10"><Inbox className="h-7 w-7 text-primary" /></div>
+            <div className="rounded-2xl border border-border/70 bg-card/72 p-4 text-center shadow-soft transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevated sm:p-6">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12"><Inbox className="h-7 w-7 text-primary" /></div>
               <h3 className="mt-5 text-lg font-semibold text-card-foreground">Improve Deliverability</h3>
               <p className="mt-2 text-sm text-muted-foreground">Authenticated emails are more likely to reach the inbox</p>
               <Accordion type="single" collapsible className="mt-4 text-left">
@@ -804,8 +805,8 @@ export default function DmarcChecker() {
               </Accordion>
             </div>
 
-            <div className="border border-border bg-card p-4 sm:p-6 text-center transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-lg">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center bg-primary/10"><BadgeCheck className="h-7 w-7 text-primary" /></div>
+            <div className="rounded-2xl border border-border/70 bg-card/72 p-4 text-center shadow-soft transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevated sm:p-6">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12"><BadgeCheck className="h-7 w-7 text-primary" /></div>
               <h3 className="mt-5 text-lg font-semibold text-card-foreground">Protect Your Brand</h3>
               <p className="mt-2 text-sm text-muted-foreground">Maintain trust with customers and partners</p>
               <Accordion type="single" collapsible className="mt-4 text-left">
@@ -830,13 +831,14 @@ export default function DmarcChecker() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-sidebar py-16 md:py-20">
+      <section className="hero-gradient-bg relative overflow-hidden border-t border-border/70 py-16 md:py-20">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-sidebar-foreground md:text-3xl">Need Help Fixing Your Email Security?</h2>
-            <p className="mt-4 text-sidebar-foreground/70">Our team can implement proper DMARC, SPF, and DKIM for your domain</p>
+            <h2 className="text-2xl font-bold text-white md:text-3xl">Need Help Fixing Your Email Security?</h2>
+            <p className="mt-4 text-white/72">Our team can implement proper DMARC, SPF, and DKIM for your domain</p>
             <div className="mt-8">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={openModal}>Get Expert Help</Button>
+              <Button size="lg" onClick={openModal}>Get Expert Help</Button>
             </div>
           </div>
         </div>

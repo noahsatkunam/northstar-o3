@@ -59,8 +59,8 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         
         {/* Animated gradient background */}
         <div
@@ -81,12 +81,12 @@ export default function About() {
               style={{ animationDelay: '0ms', animationFillMode: 'both' }}
             >
               Your Technology Partner for the{' '}
-              <span className="text-gradient">
+              <span className="text-gradient-light">
                 Long Haul
               </span>
             </h1>
             <p
-              className="mx-auto mt-8 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed"
+              className="mx-auto mt-8 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed"
               style={{ animationDelay: '100ms', animationFillMode: 'both' }}
             >
               Building trusted relationships through reliable IT solutions since 2000
@@ -95,16 +95,16 @@ export default function About() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-20 md:py-28 bg-background relative">
+      <section className="py-20 md:py-28 relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-border/70 bg-card/65 p-8 shadow-soft backdrop-blur md:p-10">
             <h2 className="text-3xl font-bold tracking-tight text-foreground mb-10 text-center">
               Our Story
             </h2>
@@ -134,8 +134,8 @@ export default function About() {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.03),transparent_70%)]" />
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.08),transparent_70%)]" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <h2 className="text-center text-3xl font-bold tracking-tight text-foreground mb-16">
             What Drives Us
@@ -144,10 +144,10 @@ export default function About() {
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="group relative overflow-hidden rounded-2xl border border-border/50 bg-background p-8 text-center shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/20"
+                className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card/72 p-8 text-center shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-primary/30 bg-primary/12 text-primary transition-transform duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
                   <value.icon className="h-8 w-8" />
                 </div>
                 <h3 className="mb-3 text-lg font-bold text-foreground">
@@ -163,7 +163,7 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-center text-3xl font-bold tracking-tight text-foreground mb-16">
             Leadership Team
@@ -172,10 +172,10 @@ export default function About() {
             {teamMembers.map((member, index) => (
               <div
                 key={member.name}
-                className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-8 text-center shadow-sm transition-all duration-300 hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card/75 p-8 text-center shadow-soft transition-all duration-300 hover:border-primary/25 hover:shadow-elevated"
               >
                 {/* Photo */}
-                <div className="mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-gray-100 to-gray-200 ring-4 ring-background shadow-inner">
+                <div className="mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full border border-border/70 bg-gradient-to-br from-gray-100 to-gray-200 ring-4 ring-background shadow-inner">
                   {member.image ? (
                     <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
                   ) : (
@@ -197,7 +197,7 @@ export default function About() {
       </section>
 
       {/* Affiliations & Certifications */}
-      <section className="py-16 bg-muted/50 border-y border-border/50">
+      <section className="border-y border-border/70 py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="mb-10 text-center text-xl font-semibold text-foreground">
             Our Partners & Certifications
@@ -206,7 +206,7 @@ export default function About() {
             {[...badgeAffiliations, ...partnerAffiliations].map((item) => (
               <div
                 key={item.name}
-                className="flex items-center justify-center rounded-xl border border-border bg-background px-5 py-3 shadow-sm transition-transform hover:-translate-y-1"
+                className="flex items-center justify-center rounded-xl border border-border/70 bg-card/60 px-5 py-3 shadow-soft transition-transform hover:-translate-y-1"
               >
                 <img src={item.image} alt={item.name} className="h-10 w-auto object-contain" />
               </div>
@@ -216,7 +216,7 @@ export default function About() {
       </section>
 
       {/* Featured In / Press */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight text-foreground mb-6 text-center">
@@ -234,7 +234,7 @@ export default function About() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all hover:-translate-y-1"
+                  className="block rounded-xl border border-border/70 bg-card/72 p-5 text-center shadow-soft transition-all hover:-translate-y-1 hover:border-primary/25 hover:shadow-elevated"
                 >
                   <span className="font-semibold text-foreground">{item.label}</span>
                 </a>
@@ -264,8 +264,8 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden hero-gradient-bg text-center">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-24 text-center md:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl mb-8">
@@ -273,7 +273,7 @@ export default function About() {
             </h2>
             <Button 
               size="lg" 
-              className="h-14 px-10 text-lg bg-white text-black hover:bg-white/90 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-1"
+              className="h-14 px-10 text-lg"
               onClick={openModal}
             >
               Get in Touch

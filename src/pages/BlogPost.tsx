@@ -123,12 +123,12 @@ export default function BlogPost() {
       </Helmet>
 
       <article>
-        <header className="relative overflow-hidden hero-gradient-bg py-20 md:py-28">
-          <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+        <header className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28">
+          <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
           <div className="container relative z-10 mx-auto px-4 lg:px-8">
             <div className="mx-auto max-w-4xl">
-              <Link to={`/blog?category=${encodeURIComponent(post.category)}`} className="inline-block rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-white/20 transition-colors">
+              <Link to={`/blog?category=${encodeURIComponent(post.category)}`} className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm transition-colors hover:bg-white/20">
                 {post.category}
               </Link>
               <h1 className="mt-8 text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">{post.title}</h1>
@@ -139,12 +139,12 @@ export default function BlogPost() {
                   </div>
                   <div>
                     <span className="block text-sm font-bold text-white">{post.author}</span>
-                    <span className="block text-xs text-gray-300">
+                    <span className="block text-xs text-white/72">
                       {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : ""}
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-300">
+                <div className="flex items-center gap-2 text-sm text-white/72">
                   <Clock className="h-4 w-4" /> {readTime}
                 </div>
               </div>
@@ -153,18 +153,18 @@ export default function BlogPost() {
         </header>
 
         {/* Featured Image */}
-        <div className="container mx-auto px-4 lg:px-8 relative z-20 -mt-12 md:-mt-20">
+        <div className="container relative z-20 mx-auto -mt-12 px-4 lg:px-8 md:-mt-20">
           <div className="mx-auto max-w-5xl">
             {post.ogImage ? (
-              <img src={post.ogImage} alt={post.title} className="aspect-video w-full rounded-2xl object-cover shadow-2xl ring-1 ring-black/5" />
+              <img src={post.ogImage} alt={post.title} className="aspect-video w-full rounded-2xl border border-border/70 object-cover shadow-elevated" />
             ) : (
-              <div className="aspect-video w-full rounded-2xl bg-muted shadow-2xl ring-1 ring-black/5" />
+              <div className="aspect-video w-full rounded-2xl border border-border/70 bg-muted shadow-elevated" />
             )}
           </div>
         </div>
 
         {/* Post Content */}
-        <div className="py-16 md:py-24 bg-background">
+        <div className="py-16 md:py-24">
           <div className="container mx-auto px-4 lg:px-8">
             <div
               className="prose prose-lg mx-auto max-w-3xl
@@ -178,7 +178,7 @@ export default function BlogPost() {
                 prose-ul:text-muted-foreground prose-ol:text-muted-foreground
                 prose-li:marker:text-primary
                 prose-img:rounded-xl prose-img:shadow-lg
-                prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none"
+                prose-code:bg-muted/70 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
@@ -186,11 +186,11 @@ export default function BlogPost() {
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
-          <div className="border-t border-border/50 bg-background pb-8">
+          <div className="border-t border-border/70 pb-8">
             <div className="container mx-auto px-4 lg:px-8">
               <div className="mx-auto max-w-3xl flex flex-wrap gap-2 pt-8">
                 {post.tags.map(tag => (
-                  <span key={tag} className="inline-block bg-muted px-3 py-1 rounded-full text-xs font-medium text-muted-foreground">{tag}</span>
+                  <span key={tag} className="inline-block rounded-full border border-border/70 bg-card/65 px-3 py-1 text-xs font-medium text-muted-foreground">{tag}</span>
                 ))}
               </div>
             </div>
@@ -198,21 +198,21 @@ export default function BlogPost() {
         )}
 
         {/* Social Share */}
-        <div className="border-y border-border/50 bg-muted/30 py-8">
+        <div className="border-y border-border/70 bg-card/45 py-8 backdrop-blur">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4">
               <span className="text-sm font-bold text-foreground uppercase tracking-wide">Share this article</span>
               <div className="flex items-center gap-3">
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="Share on LinkedIn">
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary" aria-label="Share on LinkedIn">
                   <Linkedin className="h-4 w-4" />
                 </a>
-                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="Share on Twitter">
+                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary" aria-label="Share on Twitter">
                   <Twitter className="h-4 w-4" />
                 </a>
-                <a href={`mailto:?subject=${shareTitle}&body=${shareUrl}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="Share via Email">
+                <a href={`mailto:?subject=${shareTitle}&body=${shareUrl}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary" aria-label="Share via Email">
                   <Mail className="h-4 w-4" />
                 </a>
-                <button onClick={handleCopyLink} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="Copy link">
+                <button onClick={handleCopyLink} className="flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary" aria-label="Copy link">
                   {copied ? <Check className="h-4 w-4 text-green-500" /> : <Link2 className="h-4 w-4" />}
                 </button>
               </div>
@@ -221,9 +221,9 @@ export default function BlogPost() {
         </div>
 
         {/* Author Bio */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="mx-auto max-w-3xl rounded-2xl border border-border/50 bg-card p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-border/70 bg-card/72 p-8 shadow-soft transition-shadow hover:shadow-elevated md:p-10">
               <div className="flex flex-col gap-8 sm:flex-row items-center sm:items-start">
                 <div className="h-24 w-24 shrink-0 rounded-full bg-muted ring-4 ring-background flex items-center justify-center text-3xl font-bold text-muted-foreground">
                   {post.author?.charAt(0) || "N"}
@@ -241,12 +241,12 @@ export default function BlogPost() {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 md:py-24 bg-muted/30 border-t border-border/50">
+        <section className="border-t border-border/70 py-16 md:py-24">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="text-center text-3xl font-bold text-foreground mb-12">Related Articles</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((rp) => (
-                <article key={rp.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1">
+                <article key={rp.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/72 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     {rp.ogImage && (
                       <img src={rp.ogImage} alt={rp.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -271,11 +271,11 @@ export default function BlogPost() {
       )}
 
       {/* Related Resources */}
-      <section className="py-16 md:py-20 bg-background border-t border-border/50">
+      <section className="border-t border-border/70 py-16 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-foreground mb-10">Explore More Resources</h2>
           <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
-            <Link to="/risk-assessment" className="group rounded-2xl border border-border/50 bg-card p-6 text-center hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Link to="/risk-assessment" className="group rounded-2xl border border-border/70 bg-card/72 p-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 <Shield className="h-6 w-6" />
               </div>
@@ -285,7 +285,7 @@ export default function BlogPost() {
                 Get Started <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <Link to="/dmarc-checker" className="group rounded-2xl border border-border/50 bg-card p-6 text-center hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Link to="/dmarc-checker" className="group rounded-2xl border border-border/70 bg-card/72 p-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 <Mail className="h-6 w-6" />
               </div>
@@ -295,7 +295,7 @@ export default function BlogPost() {
                 Run Check <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <button onClick={openModal} className="group rounded-2xl border border-border/50 bg-card p-6 text-center hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 w-full">
+            <button onClick={openModal} className="group w-full rounded-2xl border border-border/70 bg-card/72 p-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
                 <Clock className="h-6 w-6" />
               </div>
@@ -310,13 +310,13 @@ export default function BlogPost() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden hero-gradient-bg text-center">
-        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
+      <section className="hero-gradient-bg hero-grid-pattern relative overflow-hidden border-t border-border/70 py-24 text-center md:py-32">
+        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl mb-6">Need Help With Your Technology Strategy?</h2>
-            <p className="text-xl text-gray-300 mb-10">Our experts can help you assess your current posture and build a roadmap for success.</p>
-            <Button size="lg" className="h-14 px-10 text-lg bg-white text-black hover:bg-white/90 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-1" onClick={openModal}>
+            <p className="text-xl text-white/78 mb-10">Our experts can help you assess your current posture and build a roadmap for success.</p>
+            <Button size="lg" className="h-14 px-10 text-lg" onClick={openModal}>
               Talk to an Expert
             </Button>
           </div>

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Wrench } from "lucide-react";
+import { Menu, Wrench, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useContactModal } from "@/components/ContactModal";
 import { cn } from "@/lib/utils";
@@ -26,28 +26,27 @@ export function Header() {
     return location.pathname.startsWith(href);
   };
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 12);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
+
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -56,157 +55,125 @@ export function Header() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-300",
+          "sticky top-0 z-50 w-full border-b border-transparent transition-all duration-300",
           isScrolled
-            ? "glass border-b border-white/10 shadow-lg backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 py-2"
-            : "bg-background/80 backdrop-blur-sm py-1"
+            ? "border-border/80 bg-background/88 shadow-[0_18px_35px_-28px_hsl(var(--foreground)/0.85)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/72"
+            : "bg-background/70 backdrop-blur-sm"
         )}
       >
-        <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-          {/* Logo */}
-          <Link to="/" className="flex items-center group">
+        <nav className="container mx-auto flex h-[4.75rem] items-center justify-between px-4 lg:px-8">
+          <Link
+            to="/"
+            className="group flex items-center rounded-xl border border-transparent p-1 transition-colors hover:border-border/70"
+            aria-label="NorthStar Technology Group Home"
+          >
             <img
-              src="/logos/northstar-logo.png"
+              src="/logos/northstar-logo-white.png"
               alt="NorthStar Technology Group"
-              className="h-[9.6rem] w-auto transition-all duration-300 group-hover:scale-[1.03]"
+              className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 lg:flex">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "px-3 py-2 text-sm font-medium transition-colors rounded-md",
-                  item.isTool
-                    ? cn(
-                        "flex items-center gap-1.5 bg-secondary/10 hover:bg-secondary/20",
-                        isActive(item.href)
-                          ? "text-secondary bg-secondary/20"
-                          : "text-secondary"
-                      )
-                    : cn(
-                        // Base styles with underline animation setup
-                        "relative hover:text-primary hover:bg-muted",
-                        // Underline pseudo-element: slides in from left on hover
-                        "after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:bg-primary",
-                        "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
-                        "hover:after:scale-x-100",
-                        // Active dot indicator: small centered dot below the underline (distinct from hover)
-                        "before:absolute before:bottom-[-4px] before:left-1/2 before:-translate-x-1/2",
-                        "before:h-1 before:w-1 before:rounded-full before:bg-primary",
-                        "before:opacity-0 before:transition-opacity before:duration-200",
-                        isActive(item.href)
-                          ? "text-primary bg-muted after:scale-x-100 before:opacity-100"
-                          : "text-muted-foreground"
-                      )
-                )}
-              >
-                {item.isTool && <Wrench className="h-3.5 w-3.5" />}
-                {item.name}
-              </Link>
-            ))}
-          </div>
+          <div className="hidden items-center gap-2 lg:flex">
+            <div className="flex items-center gap-1 rounded-full border border-border/75 bg-card/70 p-1 backdrop-blur">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
+                    item.isTool
+                      ? cn(
+                          "inline-flex items-center gap-1.5 border",
+                          isActive(item.href)
+                            ? "border-secondary/45 bg-secondary/22 text-secondary"
+                            : "border-secondary/30 bg-secondary/12 text-secondary hover:bg-secondary/20"
+                        )
+                      : cn(
+                          isActive(item.href)
+                            ? "bg-primary/14 text-primary"
+                            : "text-muted-foreground hover:bg-muted/70 hover:text-foreground"
+                        )
+                  )}
+                >
+                  {item.isTool && <Wrench className="h-3.5 w-3.5" />}
+                  {item.name}
+                </Link>
+              ))}
+            </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex">
-            <Button
-              variant="default"
-              size="sm"
-              onClick={openModal}
-              className="border-0 text-white animate-subtle-glow hover:brightness-110 transition-all"
-              style={{ background: 'var(--gradient-primary)' }}
-            >
+            <Button size="sm" onClick={openModal} className="ml-1 px-5">
               Contact Us
             </Button>
           </div>
 
-          {/* Mobile menu button */}
           <button
             type="button"
-            className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors"
+            className="inline-flex items-center justify-center rounded-lg border border-border/70 bg-card/70 p-2 text-foreground transition-colors hover:bg-muted/70 lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </button>
         </nav>
       </header>
 
-      {/* Mobile Navigation Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-out",
-          mobileMenuOpen
-            ? "bg-foreground/25 backdrop-blur-[8px] opacity-100"
-            : "bg-transparent backdrop-blur-0 opacity-0 pointer-events-none"
+          "fixed inset-0 z-40 bg-black/55 transition-all duration-300 lg:hidden",
+          mobileMenuOpen ? "opacity-100 backdrop-blur-[4px]" : "pointer-events-none opacity-0 backdrop-blur-0"
         )}
         onClick={() => setMobileMenuOpen(false)}
       />
 
-      {/* Mobile Navigation Slide-in Panel */}
       <div
         className={cn(
-          "fixed top-0 right-0 z-50 h-full w-[280px] max-w-[85vw] bg-background shadow-xl lg:hidden transition-transform duration-300 ease-out",
+          "fixed right-0 top-0 z-50 h-full w-[310px] max-w-[88vw] border-l border-border/80 bg-background/96 shadow-2xl backdrop-blur-xl transition-transform duration-300 ease-out lg:hidden",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        {/* Mobile Menu Header */}
-        <div className="flex items-center justify-between h-16 px-4 border-b border-border">
-          <span className="text-lg font-bold text-foreground">Menu</span>
+        <div className="flex h-[4.75rem] items-center justify-between border-b border-border/70 px-4">
+          <span className="text-sm font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+            Navigation
+          </span>
           <button
             type="button"
-            className="p-2 text-foreground hover:bg-muted rounded-md transition-colors"
+            className="rounded-lg border border-border/70 bg-card/70 p-2 text-foreground transition-colors hover:bg-muted/70"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        {/* Mobile Menu Content */}
-        <div className="flex flex-col h-[calc(100%-4rem)] overflow-y-auto">
-          <div className="flex-1 px-4 py-4 space-y-1">
+        <div className="flex h-[calc(100%-4.75rem)] flex-col">
+          <div className="flex-1 space-y-1 overflow-y-auto px-4 py-4">
             {navigation.map((item, index) => (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
-                  "flex items-center gap-2 px-3 py-3 text-base font-medium rounded-md",
-                  // Smooth transitions for hover and active states
-                  "transition-all duration-150",
-                  // Touch/tap feedback - scale down slightly when pressed
-                  "active:scale-[0.98] active:transition-none",
-                  // Staggered fade-in-up animation when menu is open
-                  mobileMenuOpen
-                    ? "animate-fade-in-up"
-                    : "opacity-0",
+                  "flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-150",
+                  mobileMenuOpen ? "animate-fade-in-up" : "opacity-0",
                   item.isTool
                     ? cn(
-                        "bg-secondary/10",
                         isActive(item.href)
-                          ? "text-secondary bg-secondary/20"
-                          : "text-secondary hover:bg-secondary/20 active:bg-secondary/30"
+                          ? "border border-secondary/40 bg-secondary/18 text-secondary"
+                          : "border border-secondary/25 bg-secondary/10 text-secondary hover:bg-secondary/18"
                       )
                     : cn(
-                        // Add relative and before: for active left border indicator
-                        "relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2",
-                        "before:h-4 before:w-1 before:rounded-full before:bg-primary",
-                        "before:opacity-0 before:transition-opacity before:duration-200",
                         isActive(item.href)
-                          ? "text-primary bg-muted before:opacity-100"
-                          : "text-foreground hover:bg-muted hover:text-primary active:bg-muted/80"
+                          ? "bg-primary/12 text-primary"
+                          : "text-foreground hover:bg-muted/70"
                       )
                 )}
                 style={{
-                  animationDelay: mobileMenuOpen ? `${index * 75}ms` : '0ms',
+                  animationDelay: mobileMenuOpen ? `${index * 70}ms` : "0ms",
                 }}
               >
                 {item.isTool && <Wrench className="h-4 w-4" />}
@@ -215,12 +182,9 @@ export function Header() {
             ))}
           </div>
 
-          {/* Mobile Menu Footer with CTA */}
-          <div className="p-4 border-t border-border">
+          <div className="border-t border-border/70 p-4">
             <Button
-              variant="default"
-              className="w-full border-0 text-white animate-subtle-glow hover:brightness-110 transition-all"
-              style={{ background: 'var(--gradient-primary)' }}
+              className="w-full"
               onClick={() => {
                 setMobileMenuOpen(false);
                 openModal();
