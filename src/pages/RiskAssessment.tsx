@@ -303,8 +303,8 @@ export default function RiskAssessment() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="hero-gradient-bg hero-grid-pattern relative isolate overflow-hidden border-b border-border/70 py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 grain-texture opacity-30 pointer-events-none" />
+      <section className="relative overflow-hidden hero-gradient-bg py-20 md:py-28 lg:py-32">
+        <div className="absolute inset-0 grain-texture opacity-20 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-gradient-shift bg-[length:200%_200%]" aria-hidden="true" />
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -313,27 +313,26 @@ export default function RiskAssessment() {
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: "0ms", animationFillMode: "both" }}>
-              Discover Your <span className="text-gradient-light">Cybersecurity Risks</span> in Minutes
+              Discover Your <span className="text-gradient">Cybersecurity Risks</span> in Minutes
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/78 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: "100ms", animationFillMode: "both" }}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 md:text-xl animate-fade-in-up leading-relaxed" style={{ animationDelay: "100ms", animationFillMode: "both" }}>
               Get a comprehensive security assessment of your organization's attack surface and receive a detailed readiness report.
             </p>
           </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/5 p-1.5 text-white/75">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle opacity-50">
           <ChevronDown className="h-8 w-8 text-white" />
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="relative -mt-10 z-20 py-16 md:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,hsl(var(--primary)/0.1),transparent_42%)]" />
-        <div className="container relative mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background relative -mt-10 z-20">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-5xl">
 
             {/* ========== FORM STEP ========== */}
             {step === "form" && (
-              <div className="mx-auto max-w-4xl animate-fade-in-up rounded-3xl border border-border/70 bg-card/78 p-8 shadow-elevated backdrop-blur md:p-12">
+              <div className="mx-auto max-w-4xl rounded-3xl border border-border/50 bg-card p-8 md:p-12 shadow-2xl backdrop-blur-sm animate-fade-in-up">
                 <h2 className="text-center text-2xl font-bold text-card-foreground mb-2">Start Your Risk Assessment</h2>
                 <p className="text-center text-muted-foreground mb-8">Enter your information below to begin a comprehensive security scan</p>
 
@@ -595,7 +594,7 @@ export default function RiskAssessment() {
                 </Card>
 
                 {/* E. CTA Section */}
-                <div className="animate-fade-in-up rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-card/85 via-card/78 to-primary/10 p-8 shadow-elevated" style={{ animationDelay: "600ms", animationFillMode: "both" }}>
+                <div className="rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 p-8 shadow-lg animate-fade-in-up" style={{ animationDelay: "600ms", animationFillMode: "both" }}>
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-3">Get Your Full Security Report</h3>
                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
@@ -623,7 +622,7 @@ export default function RiskAssessment() {
       </section>
 
       {/* Educational Section */}
-      <section className="border-t border-border/70 py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-foreground md:text-3xl mb-12">What We Assess</h2>
           <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
@@ -632,8 +631,8 @@ export default function RiskAssessment() {
               { icon: Globe, title: "DNS & Email Security", desc: "Analysis of your domain's DNS health, email authentication, and anti-spoofing measures" },
               { icon: AlertTriangle, title: "Known Vulnerabilities", desc: "Identification of publicly disclosed vulnerabilities in your technology stack" },
             ].map((item, i) => (
-              <div key={i} className="rounded-2xl border border-border/70 bg-card/70 p-6 text-center shadow-soft">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/30 bg-primary/12">
+              <div key={i} className="text-center">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center bg-primary/10 rounded-2xl mb-4">
                   <item.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
